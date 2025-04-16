@@ -80,21 +80,33 @@ body {
     font-style: italic;
 }
 
+.poem-wrapper {
+    position: relative;
+    height: 60vh;
+    overflow: hidden;
+    width: 100%;
+    margin: 2rem 0;
+}
+
 .poem {
     font-size: 1.5rem;
     line-height: 2;
-    margin: 2rem 0;
-    height: 60vh;
-    overflow: hidden;
-    position: relative;
-    animation: scroll 60s linear;
+    position: absolute;
+    width: 100%;
+    animation: scroll 60s linear infinite;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .poem p {
     margin: 0.5rem 0;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeIn 0.5s ease forwards;
+    opacity: 1;
+    transform: none;
+    animation: none;
+    text-align: center;
+    width: 100%;
 }
 
 @keyframes scroll {
@@ -103,13 +115,6 @@ body {
     }
     100% {
         transform: translateY(-100%);
-    }
-}
-
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-        transform: translateY(0);
     }
 }
 
