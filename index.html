@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Whisperscroll Poetry</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
@@ -15,23 +15,23 @@
     <div class="fade bottom"></div>
 
     <div class="poem-container">
+        <h1 class="poem-title"></h1>
+        <h2 class="poem-author"></h2>
         <div class="poem">
-            <p>In quiet hours the world exhales,</p>
-            <p>Soft winds drift where silence sails.</p>
-            <p>The stars blink slow in velvet skies,</p>
-            <p>And dreams take shape behind closed eyes.</p>
-            <p>Each breath a tide, both in and out,</p>
-            <p>A moment's peace, devoid of doubt.</p>
-            <p>Let stillness be your gentle guide,</p>
-            <p>And find the calm you hold inside.</p>
+            <!-- Poem content will be dynamically inserted here -->
         </div>
     </div>
 
     <div class="controls">
-        <button id="pauseBtn" class="control-btn">⏸</button>
-        <button id="themeBtn" class="control-btn">🌙</button>
+        <select class="control-select">
+            <!-- Poem options will be dynamically inserted here -->
+        </select>
+        <button class="control-btn play">⏸</button>
+        <button class="control-btn speed">Speed</button>
+        <button class="control-btn theme">🌙</button>
     </div>
 
-    <script src="js/script.js"></script>
+    <script src="/js/poems.js"></script>
+    <script src="/js/script.js"></script>
 </body>
 </html> 

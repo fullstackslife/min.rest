@@ -52,11 +52,27 @@ const poems = [
             "And miles to go before I sleep,",
             "And miles to go before I sleep."
         ]
+    },
+    {
+        title: "Whisperscroll",
+        author: "Anonymous",
+        lines: [
+            "In quiet hours the world exhales,",
+            "Soft winds drift where silence sails.",
+            "The stars blink slow in velvet skies,",
+            "And dreams take shape behind closed eyes.",
+            "",
+            "Each breath a tide, both in and out,",
+            "A moment's peace, devoid of doubt.",
+            "Let stillness be your gentle guide,",
+            "And find the calm you hold inside."
+        ]
     }
 ];
 
 let currentPoemIndex = 0;
 let isPlaying = true;
+let scrollSpeed = 60; // seconds to scroll through entire poem
 
 function updatePoemDisplay() {
     const poem = poems[currentPoemIndex];
@@ -71,6 +87,12 @@ function updatePoemDisplay() {
         p.textContent = line;
         poemContainer.appendChild(p);
     });
+
+    // Reset animation
+    poemContainer.style.animation = 'none';
+    poemContainer.offsetHeight; // Trigger reflow
+    poemContainer.style.animation = `scroll ${scrollSpeed}s linear`;
+    poemContainer.style.animationPlayState = isPlaying ? 'running' : 'paused';
 }
 
 function updatePoemSelect() {
@@ -80,7 +102,7 @@ function updatePoemSelect() {
     poems.forEach((poem, index) => {
         const option = document.createElement('option');
         option.value = index;
-        option.textContent = poem.title;
+        option.textContent = `${poem.title} - ${poem.author}`;
         if (index === currentPoemIndex) {
             option.selected = true;
         }
@@ -92,22 +114,27 @@ function togglePlay() {
     const poem = document.querySelector('.poem');
     const playBtn = document.querySelector('.control-btn.play');
     
-    if (isPlaying) {
-        poem.style.animationPlayState = 'paused';
-        playBtn.textContent = 'Play';
-    } else {
-        poem.style.animationPlayState = 'running';
-        playBtn.textContent = 'Pause';
-    }
-    
     isPlaying = !isPlaying;
+    poem.style.animationPlayState = isPlaying ? 'running' : 'paused';
+    playBtn.textContent = isPlaying ? '⏸' : '▶';
 }
 
-function changeSpeed(speed) {
+function changeSpeed() {
+    scrollSpeed = scrollSpeed === 60 ? 120 : 60;
     const poem = document.querySelector('.poem');
-    poem.style.animationDuration = `${speed}s`;
+    const speedBtn = document.querySelector('.control-btn.speed');
+    
+    poem.style.animationDuration = `${scrollSpeed}s`;
+    speedBtn.textContent = `Speed: ${scrollSpeed}s`;
 }
 
+function toggleTheme() {
+    document.body.classList.toggle('dark-theme');
+    const themeBtn = document.querySelector('.control-btn.theme');
+    themeBtn.textContent = document.body.classList.contains('dark-theme') ? '☀️' : '🌙';
+}
+
+// Initialize
 document.addEventListener('DOMContentLoaded', () => {
     updatePoemDisplay();
     updatePoemSelect();
@@ -119,11 +146,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     document.querySelector('.control-btn.play').addEventListener('click', togglePlay);
-    
-    document.querySelector('.control-btn.speed').addEventListener('click', () => {
-        const currentSpeed = parseInt(document.documentElement.style.getPropertyValue('--scroll-speed') || '60');
-        const newSpeed = currentSpeed === 60 ? 120 : 60;
-        document.documentElement.style.setProperty('--scroll-speed', `${newSpeed}s`);
-        changeSpeed(newSpeed);
-    });
+    document.querySelector('.control-btn.speed').addEventListener('click', changeSpeed);
+    document.querySelector('.control-btn.theme').addEventListener('click', toggleTheme);
 }); 
