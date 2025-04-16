@@ -1,12 +1,12 @@
 :root {
-    --primary-color: #2563eb;
-    --secondary-color: #1e40af;
-    --text-color: #1f2937;
-    --light-text: #6b7280;
-    --background: #ffffff;
-    --light-background: #f3f4f6;
-    --bg-color: #1b2735;
-    --fade-color: #111;
+    --primary-color: #2d5a27;
+    --secondary-color: #1a3d1a;
+    --text-color: #1a1a1a;
+    --light-text: #4a4a4a;
+    --background: #f5f5f5;
+    --light-background: #e8e8e8;
+    --bg-color: #1a3d1a;
+    --fade-color: #2d5a27;
     --scroll-speed: 60s;
 }
 
@@ -258,14 +258,36 @@ footer {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: linear-gradient(120deg, #1b2735, #090a0f);
-    animation: bgFade 20s ease-in-out infinite alternate;
+    background: var(--bg-color);
     z-index: 0;
 }
 
-@keyframes bgFade {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 100% 50%; }
+.dark-theme {
+    --bg-color: #1a3d1a;
+    --fade-color: #2d5a27;
+    --text-color: #e8e8e8;
+    --light-text: #c4c4c4;
+    --background: #1a3d1a;
+    --light-background: #2d5a27;
+}
+
+.light-theme {
+    --bg-color: #e8e8e8;
+    --fade-color: #d4e6d4;
+    --text-color: #1a3d1a;
+    --light-text: #2d5a27;
+    --background: #f5f5f5;
+    --light-background: #e8e8e8;
+}
+
+.fade.top {
+    top: 0;
+    background: linear-gradient(to bottom, var(--fade-color) 0%, transparent 100%);
+}
+
+.fade.bottom {
+    bottom: 0;
+    background: linear-gradient(to top, var(--fade-color) 0%, transparent 100%);
 }
 
 .poem-container {
@@ -274,8 +296,9 @@ footer {
     height: 100%;
     overflow: hidden;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
     z-index: 1;
     pointer-events: none;
 }
@@ -299,18 +322,26 @@ footer {
 }
 
 .poem {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
     animation: scrollUp 60s linear infinite;
     display: flex;
     flex-direction: column;
-    gap: 2em;
-    padding-bottom: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .poem p {
     font-size: 1.5em;
     text-align: center;
-    opacity: 0;
-    animation: fadeInOut 60s linear infinite;
+    width: 100%;
+    margin: 0.5em 0;
+    opacity: 1;
+    transform: none;
+    animation: none;
 }
 
 .poem p:nth-child(1) { animation-delay: 0s; }
@@ -323,8 +354,12 @@ footer {
 .poem p:nth-child(8) { animation-delay: 49s; }
 
 @keyframes scrollUp {
-    0% { transform: translateY(100%); }
-    100% { transform: translateY(-100%); }
+    0% {
+        transform: translateY(100vh);
+    }
+    100% {
+        transform: translateY(-100%);
+    }
 }
 
 @keyframes fadeInOut {
@@ -343,16 +378,6 @@ footer {
     height: 20%;
     z-index: 2;
     pointer-events: none;
-}
-
-.fade.top {
-    top: 0;
-    background: linear-gradient(to bottom, #111 0%, transparent 100%);
-}
-
-.fade.bottom {
-    bottom: 0;
-    background: linear-gradient(to top, #111 0%, transparent 100%);
 }
 
 .controls {
