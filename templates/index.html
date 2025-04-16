@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Engine Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <style>
+        .log-entry {
+            font-family: monospace;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+        }
+        .status-running {
+            background-color: #10B981;
+            animation: pulse 2s infinite;
+        }
+        .status-stopped {
+            background-color: #EF4444;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        .file-structure {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .file-item {
+            padding-left: 1rem;
+            border-left: 1px solid #e5e7eb;
+        }
+        .directory-item {
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div id="app" class="container mx-auto px-4 py-8">
+        <!-- Error Display -->
+        <div v-if="error" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-6" role="alert">
+            <strong class="font-bold">Error!</strong>
+            <span class="block sm:inline" v-text="error"></span>
+            <span class="absolute top-0 bottom-0 right-0 px-4 py-3" @click="error = null">
+                <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <title>Close</title>
+                    <path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/>
+                </svg>
+            </span>
+        </div>
+        
+        <!-- Header -->
+        <header class="bg-white shadow rounded-lg p-6 mb-6">
+            <h1 class="text-2xl font-bold text-gray-800">Website Engine Dashboard</h1>
+            <div class="mt-4 flex items-center">
+                <span class="status-indicator" v-bind:class="{'status-running': isRunning, 'status-stopped': !isRunning}"></span>
+                <span class="text-sm text-gray-600" v-text="isRunning ? 'Engine Running' : 'Engine Stopped'"></span>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- File Explorer Section -->
+            <div class="bg-white shadow rounded-lg p-6">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">File Explorer</h2>
+                <div class="mb-4">
+                    <div class="flex items-center space-x-2 mb-2">
+                        <select v-model="selectedDomain" 
+                                @change="selectedDomain ? selectDomain(selectedDomain) : clearDomainSelection()"
+                                class="flex-1 rounded border-gray-300">
+                            <option :value="null">Root Directory</option>
+                            <option v-for="domain in domains" 
+                                    :key="domain.name" 
+                                    :value="domain.name"
+                                    v-text="domain.name">
+                            </option>
+                        </select>
+                        <button v-if="selectedDomain"
+                                @click="clearDomainSelection"
+                                class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-3 py-1 rounded">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <!-- Domain Info -->
+                    <div v-if="selectedDomain && domainStructure" class="mb-4 p-4 bg-gray-50 rounded">
+                        <h3 class="text-lg font-medium text-gray-800 mb-2" v-text="domainStructure.name"></h3>
+                        <div class="grid grid-cols-2 gap-4 text-sm">
+                            <div>
+                                <span class="text-gray-600">Files:</span>
+                                <span class="ml-2" v-text="domainStructure.files.length"></span>
+                            </div>
+                            <div>
+                                <span class="text-gray-600">Directories:</span>
+                                <span class="ml-2" v-text="domainStructure.directories.length"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Domain Pages -->
+                    <div v-if="selectedDomain && domainPages.length > 0" class="mb-4">
+                        <h4 class="text-sm font-semibold text-gray-700 mb-2">Pages</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <button v-for="page in domainPages" 
+                                    :key="page.path"
+                                    @click="previewFile(page.path)"
+                                    class="px-3 py-1 bg-blue-100 text-blue-800 rounded hover:bg-blue-200 text-sm">
+                                <span v-text="page.name"></span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-2">
+                        <button @click="navigateUp" 
+                                :disabled="!currentPath"
+                                class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-3 py-1 rounded disabled:opacity-50">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+                            </svg>
+                        </button>
+                        <div class="flex-1 bg-gray-100 rounded px-3 py-1 text-sm">
+                            <span v-if="currentPath" v-text="currentPath"></span>
+                            <span v-else class="text-gray-500">
+                                <span v-if="selectedDomain" v-text="selectedDomain"></span>
+                                <span v-else>Root Directory</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="file-explorer bg-gray-50 rounded p-2 max-h-96 overflow-y-auto">
+                    <div v-if="loadingExplorer" class="text-center py-4">
+                        <svg class="animate-spin h-5 w-5 text-gray-500 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                    </div>
+                    <div v-else-if="fileExplorerItems.length === 0" class="text-center py-4 text-gray-500">
+                        No files or directories found
+                    </div>
+                    <div v-else class="space-y-1">
+                        <div v-for="item in fileExplorerItems" 
+                             :key="item.path"
+                             class="flex items-center space-x-2 p-2 hover:bg-gray-100 rounded cursor-pointer"
+                             :class="{'text-blue-600': item.type === 'directory' || item.type === 'domain'}"
+                             @click="item.type === 'directory' || item.type === 'domain' ? fetchFileExplorer(item.path) : previewFile(item.path)">
+                            <svg v-if="item.type === 'directory' || item.type === 'domain'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+                            </svg>
+                            <svg v-else class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                            <span class="flex-1" v-text="item.name"></span>
+                            <span v-if="item.type === 'file'" class="text-xs text-gray-500" v-text="formatSize(item.size)"></span>
+                            <span class="text-xs text-gray-500" v-text="formatDate(item.modified)"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Domains Section -->
+            <div class="bg-white shadow rounded-lg p-6">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">Domains</h2>
+                <div class="space-y-4">
+                    <div v-for="domain in domains" :key="domain.name" class="border rounded-lg p-4">
+                        <h3 class="font-medium text-gray-800" v-text="domain.name || 'Unnamed Domain'"></h3>
+                        <p class="text-sm text-gray-600 mt-1" v-text="domain.description || 'No description available'"></p>
+                        
+                        <!-- File Structure -->
+                        <div class="mt-4">
+                            <h4 class="text-sm font-semibold text-gray-700 mb-2">File Structure</h4>
+                            <div class="file-structure bg-gray-50 rounded p-2">
+                                <div v-if="fileStructures && domain.name && fileStructures[domain.name]" class="space-y-1">
+                                    <template v-if="fileStructures[domain.name].length > 0">
+                                        <div v-for="(fileItem, index) in fileStructures[domain.name]" 
+                                             :key="index"
+                                             :class="{'file-item': fileItem.type === 'file', 'directory-item': fileItem.type === 'directory'}"
+                                             class="text-sm">
+                                            <span v-text="fileItem.path || ''"></span>
+                                            <span v-if="fileItem.type === 'file'" class="text-gray-500 text-xs ml-2">
+                                                (<span v-text="formatSize(fileItem.size)"></span>)
+                                            </span>
+                                        </div>
+                                    </template>
+                                    <div v-else class="text-sm text-gray-500">
+                                        No files found
+                                    </div>
+                                </div>
+                                <div v-else class="text-sm text-gray-500">
+                                    Loading file structure...
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Page Creation -->
+                        <div class="mt-4">
+                            <h4 class="text-sm font-semibold text-gray-700 mb-2">Create New Page</h4>
+                            <div class="flex space-x-2">
+                                <select v-model="newPageType" class="flex-1 rounded border-gray-300">
+                                    <option v-for="type in pageTypes" :value="type" v-text="type"></option>
+                                </select>
+                                <select v-model="newPageTheme" class="flex-1 rounded border-gray-300">
+                                    <option v-for="theme in themeOptions" :value="theme" v-text="theme"></option>
+                                </select>
+                                <button @click="createPage(domain.name)" 
+                                        class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded">
+                                    Create
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div v-if="domains.length === 0" class="text-center text-gray-500">
+                        No domains found. Add context files to the context directory.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Logs Section -->
+            <div class="bg-white shadow rounded-lg p-6">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">Recent Logs</h2>
+                <div class="bg-gray-900 text-gray-100 rounded-lg p-4 h-96 overflow-y-auto">
+                    <div v-for="log in logs" :key="log" class="log-entry text-sm mb-1" v-text="log"></div>
+                </div>
+            </div>
+
+            <!-- Preview Section -->
+            <div class="bg-white shadow rounded-lg p-6">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">Page Preview</h2>
+                <div v-if="previewPath" class="mb-4 flex items-center justify-between">
+                    <div class="text-sm text-gray-600" v-text="previewPath"></div>
+                    <button @click="clearPreview" 
+                            class="text-gray-500 hover:text-gray-700">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <div v-if="previewError" class="mb-4 p-4 bg-red-100 text-red-700 rounded">
+                    <span v-text="previewError"></span>
+                </div>
+                <div v-if="loadingPreview" class="text-center py-8">
+                    <svg class="animate-spin h-8 w-8 text-gray-500 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                </div>
+                <div v-else-if="previewContent" class="preview-container bg-white rounded border border-gray-200 overflow-hidden">
+                    <iframe :srcdoc="previewContent" 
+                            class="w-full h-96 border-0"
+                            sandbox="allow-same-origin allow-scripts">
+                    </iframe>
+                </div>
+                <div v-else class="text-center py-8 text-gray-500">
+                    <p>Select an HTML file to preview</p>
+                    <p class="text-sm mt-2">Click on an HTML file in the file explorer to view its preview</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="mt-6 bg-white shadow rounded-lg p-6">
+            <div class="flex space-x-4">
+                <button v-on:click="runEngine" 
+                        v-bind:disabled="isRunning"
+                        class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded disabled:opacity-50 disabled:cursor-not-allowed">
+                    Start Engine
+                </button>
+                <button v-on:click="stopEngine" 
+                        v-bind:disabled="!isRunning"
+                        class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded disabled:opacity-50 disabled:cursor-not-allowed">
+                    Stop Engine
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html> 

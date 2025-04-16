@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FullStacks.us - Comprehensive software development and AI solutions">
+    <meta name="keywords" content="software development, AI, talent marketplace, blockchain, crypto, full stack development">
+    <title>FullStacks.us - Our Services</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --text-color: #333;
+            --card-bg: white;
+            --card-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #3a86ff;
+            --secondary-color: #adb5bd;
+            --background-color: #1a1a1a;
+            --text-color: #f8f9fa;
+            --card-bg: #2d2d2d;
+            --card-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .services-hero {
+            background: linear-gradient(135deg, var(--primary-color), #0056b3);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .services-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .services-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .service-card ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .service-card li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .service-card li:before {
+            content: "→";
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--primary-color), #0056b3);
+            color: white;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: white;
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">
+                <img src="assets/logo.svg" alt="FullStacks.us Logo" class="logo">
+            </a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/about.html">About</a>
+                <a href="/services.html" class="active">Services</a>
+                <a href="/contact.html">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="services-hero">
+            <h1>Our Services</h1>
+            <p>Comprehensive software development and AI solutions for modern businesses</p>
+        </section>
+
+        <section class="services-grid">
+            <div class="service-card">
+                <h2>AI-Boosted Development</h2>
+                <p>Leverage AI to accelerate your development process</p>
+                <ul>
+                    <li>Code generation and optimization</li>
+                    <li>Automated testing and QA</li>
+                    <li>Performance analysis</li>
+                    <li>Documentation automation</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <h2>Talent Matching</h2>
+                <p>Connect with vetted developers and teams</p>
+                <ul>
+                    <li>Skill-based matching</li>
+                    <li>Project compatibility analysis</li>
+                    <li>Team formation assistance</li>
+                    <li>Performance tracking</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <h2>Project Management</h2>
+                <p>Streamlined project execution and delivery</p>
+                <ul>
+                    <li>Agile methodology implementation</li>
+                    <li>Progress tracking</li>
+                    <li>Resource allocation</li>
+                    <li>Risk management</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <h2>Quality Assurance</h2>
+                <p>Comprehensive testing and quality control</p>
+                <ul>
+                    <li>Automated testing</li>
+                    <li>Security audits</li>
+                    <li>Performance optimization</li>
+                    <li>Code review</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>Ready to Transform Your Development Process?</h2>
+            <p>Contact us to discuss how we can help your business</p>
+            <a href="/contact.html" class="cta-button">Get Started</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 FullStacks.us. All rights reserved.</p>
+    </footer>
+</body>
+</html> 

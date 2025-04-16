@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WarBot.Cloud - Latest Updates and Insights">
+    <meta name="keywords" content="AI combat, security testing, tactical development, blog, updates">
+    <title>WarBot.Cloud - Blog</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <style>
+        :root {
+            --primary-color: #ff3e3e;
+            --secondary-color: #2a2a2a;
+            --background-color: #1a1a1a;
+            --text-color: #ffffff;
+            --accent-color: #00ff00;
+            --card-bg: #2d2d2d;
+            --card-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: 
+                linear-gradient(rgba(26, 26, 26, 0.75), rgba(26, 26, 26, 0.75)),
+                url('assets/cyber-bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .blog-hero {
+            position: relative;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .blog-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.3);
+            z-index: 1;
+        }
+
+        .blog-hero h1,
+        .blog-hero p {
+            position: relative;
+            z-index: 2;
+        }
+
+        .blog-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+            text-shadow: 0 0 10px rgba(0,255,0,0.5);
+        }
+
+        .blog-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .blog-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .blog-content {
+            padding: 2rem;
+        }
+
+        .blog-content h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .blog-meta {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-excerpt {
+            margin-bottom: 1rem;
+        }
+
+        .read-more {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: var(--primary-color);
+        }
+
+        .categories {
+            margin-bottom: 2rem;
+        }
+
+        .category-tag {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--card-bg);
+            color: var(--accent-color);
+            border-radius: 20px;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .category-tag:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            gap: 1rem;
+        }
+
+        .pagination a {
+            padding: 0.5rem 1rem;
+            background: var(--card-bg);
+            color: var(--text-color);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background 0.3s ease;
+        }
+
+        .pagination a:hover {
+            background: var(--primary-color);
+        }
+
+        .pagination .active {
+            background: var(--primary-color);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--secondary-color), #000000);
+            padding: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .logo {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">
+                <img src="assets/logo.png?v=1" alt="WarBot.Cloud Logo" class="logo">
+            </a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/about.html">About</a>
+                <a href="/services.html">Services</a>
+                <a href="/simulations.html">Simulations</a>
+                <a href="/security.html">Security</a>
+                <a href="/documentation.html">Documentation</a>
+                <a href="/resources.html">Resources</a>
+                <a href="/blog.html">Blog</a>
+                <a href="/contact.html">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="blog-hero">
+            <h1>Latest Updates & Insights</h1>
+            <p>Stay informed about the latest developments in AI-powered automation and security testing</p>
+        </section>
+
+        <div class="blog-container">
+            <div class="categories">
+                <a href="#" class="category-tag">All Posts</a>
+                <a href="#" class="category-tag">AI Development</a>
+                <a href="#" class="category-tag">Security Testing</a>
+                <a href="#" class="category-tag">Tactical Development</a>
+                <a href="#" class="category-tag">Updates</a>
+            </div>
+
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <img src="assets/combat-simulation.jpg" alt="Advanced Combat Simulation" class="blog-image">
+                    <div class="blog-content">
+                        <h2>Advanced Combat Simulation Techniques</h2>
+                        <div class="blog-meta">
+                            <span>April 16, 2025</span>
+                            <span>Combat Simulation</span>
+                        </div>
+                        <p class="blog-excerpt">Discover how WarBot.Cloud is revolutionizing tactical training with cutting-edge VR and AI integration...</p>
+                        <a href="blog-posts/advanced-combat-simulation.html" class="read-more">Read More →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <img src="assets/ai-development.jpg" alt="AI Development Advances" class="blog-image">
+                    <div class="blog-content">
+                        <h2>AI Development Advances</h2>
+                        <div class="blog-meta">
+                            <span>April 15, 2025</span>
+                            <span>AI Development</span>
+                        </div>
+                        <p class="blog-excerpt">Explore the latest breakthroughs in AI-powered automation and machine learning...</p>
+                        <a href="blog-posts/ai-development-advances.html" class="read-more">Read More →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <img src="assets/security-testing.jpg" alt="Security Testing Innovations" class="blog-image">
+                    <div class="blog-content">
+                        <h2>Security Testing Innovations</h2>
+                        <div class="blog-meta">
+                            <span>April 14, 2025</span>
+                            <span>Security Testing</span>
+                        </div>
+                        <p class="blog-excerpt">Learn about our latest developments in penetration testing and vulnerability detection...</p>
+                        <a href="blog-posts/security-testing-innovations.html" class="read-more">Read More →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <img src="assets/tactical-development.jpg" alt="Tactical Development Breakthroughs" class="blog-image">
+                    <div class="blog-content">
+                        <h2>Tactical Development Breakthroughs</h2>
+                        <div class="blog-meta">
+                            <span>April 13, 2025</span>
+                            <span>Tactical Development</span>
+                        </div>
+                        <p class="blog-excerpt">Discover how our new scenario generation engine is transforming combat simulation...</p>
+                        <a href="blog-posts/tactical-development-breakthroughs.html" class="read-more">Read More →</a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="pagination">
+                <a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">Next →</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 WarBot.Cloud. All rights reserved.</p>
+    </footer>
+</body>
+</html> 

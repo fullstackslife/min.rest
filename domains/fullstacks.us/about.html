@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about FullStacks.us - Our mission, team, and vision for the future of work">
+    <title>About FullStacks.us - Connecting Companies with Vetted Talent</title>
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #0056b3);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .mission {
+            background: white;
+            padding: 4rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin: 2rem 0;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .team-member {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .team-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+
+        .team-name {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .team-role {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .values {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .value-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .value-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: white;
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .mission {
+                padding: 2rem 1rem;
+            }
+
+            .team-grid, .values {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>About FullStacks.us</h1>
+            <p>Connecting Companies with Vetted Talent</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="mission">
+            <h2>Our Mission</h2>
+            <p>At FullStacks.us, we're revolutionizing how companies connect with top-tier development talent. Our platform combines AI-powered matching with a token-based economy to create a more efficient, transparent, and rewarding ecosystem for both companies and developers.</p>
+        </section>
+
+        <section>
+            <h2>Our Values</h2>
+            <div class="values">
+                <div class="value-card">
+                    <div class="value-icon">🚀</div>
+                    <h3>Innovation</h3>
+                    <p>We constantly push the boundaries of what's possible in talent matching and project management.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h3>Transparency</h3>
+                    <p>We believe in open communication and clear expectations for all parties involved.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">💡</div>
+                    <h3>Quality</h3>
+                    <p>We maintain the highest standards in vetting talent and matching them with projects.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="assets/team/john.jpg" alt="John Smith" class="team-image">
+                    <h3 class="team-name">John Smith</h3>
+                    <p class="team-role">CEO & Founder</p>
+                    <p>Former tech executive with 15+ years of experience in software development and talent management.</p>
+                </div>
+                <div class="team-member">
+                    <img src="assets/team/sarah.jpg" alt="Sarah Johnson" class="team-image">
+                    <h3 class="team-name">Sarah Johnson</h3>
+                    <p class="team-role">CTO</p>
+                    <p>Expert in AI and blockchain technologies, leading our technical innovation.</p>
+                </div>
+                <div class="team-member">
+                    <img src="assets/team/michael.jpg" alt="Michael Chen" class="team-image">
+                    <h3 class="team-name">Michael Chen</h3>
+                    <p class="team-role">Head of Talent</p>
+                    <p>Specializes in talent acquisition and developer relations.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>Join Our Mission</h2>
+            <p>Whether you're a company looking for top talent or a developer seeking meaningful projects, we'd love to have you join our community.</p>
+            <a href="#hire" class="cta-button">Get Started</a>
+        </section>
+    </div>
+</body>
+</html> 

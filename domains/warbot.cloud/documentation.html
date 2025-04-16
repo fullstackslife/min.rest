@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WarBot.Cloud - Ad-Bot Development Documentation">
+    <meta name="keywords" content="AI combat, security testing, tactical development, bot development, automation">
+    <title>WarBot.Cloud - Documentation</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <style>
+        :root {
+            --primary-color: #ff3e3e;
+            --secondary-color: #2a2a2a;
+            --background-color: #1a1a1a;
+            --text-color: #ffffff;
+            --accent-color: #00ff00;
+            --card-bg: #2d2d2d;
+            --card-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: 
+                linear-gradient(rgba(26, 26, 26, 0.75), rgba(26, 26, 26, 0.75)),
+                url('assets/cyber-bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .doc-hero {
+            position: relative;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .doc-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.3);
+            z-index: 1;
+        }
+
+        .doc-hero h1 {
+            position: relative;
+            z-index: 2;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+            text-shadow: 0 0 10px rgba(0,255,0,0.5);
+        }
+
+        .doc-hero p {
+            position: relative;
+            z-index: 2;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .doc-content {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .doc-section {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .doc-section:hover {
+            transform: translateY(-5px);
+        }
+
+        .doc-section h2 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .doc-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .doc-section li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .doc-section li:before {
+            content: "→";
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--secondary-color), #000000);
+        }
+
+        .cta-section h2 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255,62,62,0.4);
+        }
+
+        .code-block {
+            background: #000;
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+
+        .code-block pre {
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            color: var(--accent-color);
+        }
+
+        .milestone {
+            background: rgba(0, 255, 0, 0.1);
+            border-left: 4px solid var(--accent-color);
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .logo {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary-color), #000000);
+            padding: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">
+                <img src="assets/logo.png?v=1" alt="WarBot.Cloud Logo" class="logo">
+            </a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/about.html">About</a>
+                <a href="/services.html">Services</a>
+                <a href="/simulations.html">Simulations</a>
+                <a href="/security.html">Security</a>
+                <a href="/documentation.html">Documentation</a>
+                <a href="/resources.html">Resources</a>
+                <a href="/blog.html">Blog</a>
+                <a href="/contact.html">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="doc-hero">
+            <h1>Ad-Bot Development Documentation</h1>
+            <p>Comprehensive guide to developing and deploying AI-powered automation solutions</p>
+        </section>
+
+        <div class="doc-container">
+            <div class="phase-card">
+                <h2>Phase 1: Planning and Setup</h2>
+                <h3>Objective</h3>
+                <p>Establish clear goals and set up the development environment.</p>
+                
+                <h3>Key Tasks</h3>
+                <ul>
+                    <li>Define specific requirements and tasks</li>
+                    <li>Identify target audience and needs</li>
+                    <li>Review Terms of Service and legal compliance</li>
+                    <li>Set up development environment</li>
+                </ul>
+
+                <div class="milestone">
+                    <strong>Milestone:</strong> Clearly defined project scope and environment setup.
+                </div>
+            </div>
+
+            <div class="phase-card">
+                <h2>Phase 2: Initial Setup</h2>
+                <h3>Objective</h3>
+                <p>Set up the basic framework for the bot.</p>
+                
+                <h3>Implementation</h3>
+                <ul>
+                    <li>ADB Configuration and testing</li>
+                    <li>Basic scripting for game interaction</li>
+                    <li>Error handling and logging setup</li>
+                </ul>
+
+                <div class="code-block">
+                    <pre># Example ADB command
+adb devices
+adb shell input tap x y</pre>
+                </div>
+
+                <div class="milestone">
+                    <strong>Milestone:</strong> Basic interaction with the game is working.
+                </div>
+            </div>
+
+            <div class="phase-card">
+                <h2>Phase 3: Ad Detection</h2>
+                <h3>Objective</h3>
+                <p>Develop robust ad detection logic.</p>
+                
+                <h3>Implementation</h3>
+                <ul>
+                    <li>Ad image collection and processing</li>
+                    <li>Template matching implementation</li>
+                    <li>Machine learning integration (optional)</li>
+                </ul>
+
+                <div class="code-block">
+                    <pre>import cv2
+
+def detect_ad(image_path, template_path):
+    img_rgb = cv2.imread(image_path)
+    img_gray = cv2.cvtColor(img_rgb, cv2.COLOR_BGR2GRAY)
+    template = cv2.imread(template_path, 0)
+    w, h = template.shape[::-1]
+    method = eval('cv2.TM_CCOEFF_NORMED')
+    res = cv2.matchTemplate(img_gray, template, method)
+    min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
+    if max_val > 0.8:
+        return max_loc
+    return None</pre>
+                </div>
+
+                <div class="milestone">
+                    <strong>Milestone:</strong> Ad detection logic is implemented and working.
+                </div>
+            </div>
+
+            <div class="phase-card">
+                <h2>Phase 4: Map Navigation</h2>
+                <h3>Objective</h3>
+                <p>Develop map navigation logic.</p>
+                
+                <h3>Implementation</h3>
+                <ul>
+                    <li>Map element detection</li>
+                    <li>Pathfinding algorithm implementation</li>
+                    <li>Dynamic obstacle handling</li>
+                </ul>
+
+                <div class="milestone">
+                    <strong>Milestone:</strong> Map navigation is functional and can handle basic scenarios.
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 WarBot.Cloud. All rights reserved.</p>
+    </footer>
+</body>
+</html> 

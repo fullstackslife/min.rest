@@ -1,0 +1,66 @@
+# Ignore domain-specific content and assets
+**/content/
+**/assets/
+**/config/
+
+# Ignore context files
+**/context.md
+
+# Ignore all markdown files
+*.md
+
+# Ignore domain-specific git directories
+**/.git/
+domains/**/.git/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Logs
+*.log
+log/
+
+# Environment
+.env
+.venv
+env/
+venv/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Media files
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.svg
+*.mp4
+*.mov
+*.wav
+*.mp3
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Environment variables
+.env.local
+.env.*.local 

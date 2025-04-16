@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WarBot.Cloud - Your hub for AI-powered combat simulations, security testing, and tactical development in the cloud">
+    <meta name="keywords" content="AI combat, security testing, tactical development, cloud computing, military simulation">
+    <title>WarBot.Cloud - Deploy. Dominate. Evolve.</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <style>
+        :root {
+            --primary-color: #ff3e3e;
+            --secondary-color: #2a2a2a;
+            --background-color: #1a1a1a;
+            --text-color: #ffffff;
+            --accent-color: #00ff00;
+            --card-bg: #2d2d2d;
+            --card-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: 
+                linear-gradient(rgba(26, 26, 26, 0.75), rgba(26, 26, 26, 0.75)),
+                url('assets/cyber-bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--secondary-color), #000000);
+            padding: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .logo {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .hero {
+            position: relative;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.3);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+            text-shadow: 0 0 10px rgba(0,255,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255,62,62,0.4);
+        }
+
+        .features {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--accent-color);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background: var(--secondary-color);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">
+                <img src="assets/logo.png?v=1" alt="WarBot.Cloud Logo" class="logo">
+            </a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/about.html">About</a>
+                <a href="/services.html">Services</a>
+                <a href="/simulations.html">Simulations</a>
+                <a href="/security.html">Security</a>
+                <a href="/documentation.html">Documentation</a>
+                <a href="/resources.html">Resources</a>
+                <a href="/blog.html">Blog</a>
+                <a href="/contact.html">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Deploy. Dominate. Evolve.</h1>
+            <p>Your hub for AI-powered combat simulations, security testing, and tactical development in the cloud.</p>
+            <a href="#get-started" class="cta-button">Get Started</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2>Advanced Capabilities</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>Combat Simulations</h3>
+                <p>State-of-the-art AI-driven combat scenarios for tactical training and strategy development.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Security Testing</h3>
+                <p>Comprehensive security assessment tools powered by advanced machine learning algorithms.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Tactical Development</h3>
+                <p>Cloud-based platform for developing and testing military tactics and strategies.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 WarBot.Cloud. All rights reserved.</p>
+    </footer>
+</body>
+</html> 

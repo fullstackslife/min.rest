@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Donna's Best - Professional services and solutions">
+    <meta name="keywords" content="professional services, consulting, solutions, business development">
+    <title>Donna's Best - Our Services</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <style>
+        :root {
+            --primary-color: #6a11cb;
+            --secondary-color: #2575fc;
+            --background-color: #ffffff;
+            --text-color: #333333;
+            --card-bg: #f8f9fa;
+            --card-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        .services-hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .services-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .services-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .service-card ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .service-card li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .service-card li:before {
+            content: "→";
+            color: var(--secondary-color);
+            position: absolute;
+            left: 0;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: white;
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">
+                <img src="assets/logo.svg" alt="Donna's Best Logo" class="logo">
+            </a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/about.html">About</a>
+                <a href="/services.html" class="active">Services</a>
+                <a href="/contact.html">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="services-hero">
+            <h1>Our Services</h1>
+            <p>Professional solutions tailored to your needs</p>
+        </section>
+
+        <section class="services-grid">
+            <div class="service-card">
+                <h2>Business Consulting</h2>
+                <p>Strategic guidance for business growth</p>
+                <ul>
+                    <li>Market analysis</li>
+                    <li>Strategic planning</li>
+                    <li>Process optimization</li>
+                    <li>Performance metrics</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <h2>Professional Development</h2>
+                <p>Enhance your team's capabilities</p>
+                <ul>
+                    <li>Training programs</li>
+                    <li>Skill assessment</li>
+                    <li>Leadership development</li>
+                    <li>Team building</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <h2>Project Management</h2>
+                <p>Efficient project execution</p>
+                <ul>
+                    <li>Project planning</li>
+                    <li>Resource allocation</li>
+                    <li>Timeline management</li>
+                    <li>Quality control</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <h2>Strategic Planning</h2>
+                <p>Long-term business success</p>
+                <ul>
+                    <li>Goal setting</li>
+                    <li>Risk assessment</li>
+                    <li>Resource planning</li>
+                    <li>Performance tracking</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>Ready to Take Your Business to the Next Level?</h2>
+            <p>Contact us to discuss how we can help you achieve your goals</p>
+            <a href="/contact.html" class="cta-button">Get Started</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Donna's Best. All rights reserved.</p>
+    </footer>
+</body>
+</html> 

@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FullStacks.us connects companies with vetted talent and AI-boosted workstreams for high-impact projects. Fast, affordable, and fully automated.">
+    <meta name="keywords" content="software development, AI, talent marketplace, blockchain, crypto, full stack development">
+    <meta name="author" content="FullStacks.us">
+    <title>FullStacks.us - Connecting Companies with Vetted Talent</title>
+    <script src="https://cdn.jsdelivr.net/npm/@brevo/web-forms/dist/bundle.js"></script>
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --text-color: #333;
+            --card-bg: white;
+            --card-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #3a86ff;
+            --secondary-color: #adb5bd;
+            --background-color: #1a1a1a;
+            --text-color: #f8f9fa;
+            --card-bg: #2d2d2d;
+            --card-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #0056b3);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .logo {
+            max-width: 200px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-text {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .cta-buttons {
+            margin: 2rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature {
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .subscribe {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .subscribe h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .subscribe p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .hero-text {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                margin: 0.5rem 0;
+            }
+        }
+
+        .testimonials {
+            background-color: #f8f9fa;
+            padding: 5rem 0;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .testimonial-quote {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .faq {
+            padding: 5rem 0;
+        }
+
+        .faq-item {
+            margin-bottom: 2rem;
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .faq-question {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .token-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .token-feature {
+            text-align: center;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .token-feature h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .nav-container {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            height: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-cta {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav {
+                padding: 1rem;
+            }
+        }
+
+        .theme-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+        }
+
+        .feature, .testimonial, .faq-item, .token-feature {
+            background: var(--card-bg);
+            box-shadow: var(--card-shadow);
+        }
+
+        @media (max-width: 768px) {
+            .theme-toggle {
+                bottom: 1rem;
+                right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-container">
+        <div class="nav">
+            <a href="/" class="nav-logo">
+                <img src="fullstacks.us/assets/logo.png" alt="FullStacks.us Logo" height="40">
+            </a>
+            <button class="mobile-menu-btn">☰</button>
+            <div class="nav-links">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/blog" class="nav-link">Blog</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#tokens" class="nav-link">Tokens</a>
+                <a href="#hire" class="nav-cta">Start Hiring</a>
+            </div>
+        </div>
+    </nav>
+
+    <header>
+        <div class="container">
+            <img src="fullstacks.us/assets/logo.png" alt="FullStacks.us Logo" class="logo">
+            <h1 class="hero-text">Welcome to FullStacks.us</h1>
+            <p class="hero-subtitle">Connecting companies with vetted talent and AI-boosted workstreams to complete high-impact projects—fast, affordable, and fully automated.</p>
+            <div class="cta-buttons">
+                <a href="#hire" class="btn btn-primary">Start Hiring</a>
+                <a href="#apply" class="btn btn-secondary">Apply to Work</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="features">
+        <div class="container">
+            <div class="features">
+                <div class="feature">
+                    <h3>For Companies</h3>
+                    <p>Access vetted talent and AI-enhanced workflows to complete projects faster and more affordably than traditional hiring.</p>
+                </div>
+                <div class="feature">
+                    <h3>For Talent</h3>
+                    <p>Find meaningful work, flexible schedules, and earn crypto bonuses through our innovative token system.</p>
+                </div>
+                <div class="feature">
+                    <h3>AI-Enhanced</h3>
+                    <p>Leverage cutting-edge AI tools to streamline project management and enhance team productivity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tokens" class="feature">
+        <div class="container">
+            <h2>Earn $FULL Tokens</h2>
+            <p>Our native token that grows with you. Get paid in $FULL and participate in the platform's success.</p>
+            <div class="token-details">
+                <div class="token-feature">
+                    <h3>Staking Rewards</h3>
+                    <p>Earn passive income by staking your $FULL tokens</p>
+                </div>
+                <div class="token-feature">
+                    <h3>Platform Benefits</h3>
+                    <p>Access premium features and reduced fees</p>
+                </div>
+                <div class="token-feature">
+                    <h3>Governance</h3>
+                    <p>Participate in platform decisions and upgrades</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Our Community Says</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <p class="testimonial-quote">"FullStacks.us transformed how we handle our development projects. The AI integration is game-changing."</p>
+                    <p class="testimonial-author">- Sarah Johnson, CTO at TechCorp</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-quote">"As a developer, I love the flexibility and the token rewards system. It's the future of work."</p>
+                    <p class="testimonial-author">- Michael Chen, Full Stack Developer</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-quote">"The quality of talent and the speed of project completion exceeded our expectations."</p>
+                    <p class="testimonial-author">- David Wilson, Startup Founder</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h3 class="faq-question">How does the AI integration work?</h3>
+                <p>Our AI system helps match projects with the right talent, automates routine tasks, and provides intelligent project management tools to streamline workflows.</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">What are the benefits of $FULL tokens?</h3>
+                <p>$FULL tokens provide access to premium features, staking rewards, and governance rights within the platform. They also serve as a payment method for services.</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">How do you vet talent?</h3>
+                <p>We use a combination of technical assessments, portfolio reviews, and AI-powered skill verification to ensure high-quality talent for our clients.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="subscribe">
+        <div class="container">
+            <h2>Stay Updated</h2>
+            <p>Join our community to receive the latest updates and opportunities.</p>
+            <!-- Brevo Newsletter Form -->
+            <div class="sib-form" style="text-align: center;">
+                <div id="sib-form-container" class="sib-form-container">
+                    <div id="sib-container" class="sib-container--large sib-container--vertical">
+                        <form id="sib-form" method="POST" 
+                              action="https://[YOUR-BREVO-FORM-ENDPOINT]"
+                              data-type="subscription">
+                            <div style="padding: 8px 0;">
+                                <div class="sib-input sib-form-block">
+                                    <div class="form__entry entry_block">
+                                        <div class="form__label-row">
+                                            <input class="input" type="email" 
+                                                   id="EMAIL" 
+                                                   name="EMAIL" 
+                                                   autocomplete="off" 
+                                                   placeholder="Your email address"
+                                                   data-required="true" 
+                                                   required 
+                                                   style="padding: 1rem; width: 300px; border-radius: 8px; border: none;">
+                                        </div>
+                                        <button class="btn btn-primary" 
+                                                style="margin-top: 1rem; border: none; cursor: pointer;" 
+                                                form="sib-form" 
+                                                type="submit">
+                                            Subscribe
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- End Brevo Form -->
+        </div>
+    </section>
+
+    <button class="theme-toggle" aria-label="Toggle dark mode">
+        <span class="theme-icon">🌙</span>
+    </button>
+
+    <script>
+        window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
+        window.LOCALE = 'en';
+        window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = 'Please enter a valid email address.';
+        window.REQUIRED_ERROR_MESSAGE = 'This field cannot be left blank.';
+        window.GENERIC_INVALID_MESSAGE = 'Please enter a valid value.';
+        window.translation = {
+            common: {
+                selectedList: '{quantity} list selected',
+                selectedLists: '{quantity} lists selected'
+            }
+        };
+
+        // Mobile menu functionality
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav')) {
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Dark mode functionality
+        const themeToggle = document.querySelector('.theme-toggle');
+        const themeIcon = document.querySelector('.theme-icon');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+        }
+
+        // Initialize theme
+        const savedTheme = localStorage.getItem('theme') || 
+                          (prefersDarkScheme.matches ? 'dark' : 'light');
+        setTheme(savedTheme);
+
+        // Toggle theme
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+        });
+
+        // Listen for system theme changes
+        prefersDarkScheme.addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                setTheme(e.matches ? 'dark' : 'light');
+            }
+        });
+    </script>
+</body>
+</html>

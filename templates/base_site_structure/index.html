@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ site_name }}</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <meta name="description" content="{{ site_description }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="/">{{ site_name }}</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/services.html">Services</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" style="background-image: url('assets/images/hero-bg.jpg');">
+            <div class="hero-content">
+                <h1>{{ site_name }}</h1>
+                <p>{{ site_tagline }}</p>
+                <a href="/contact.html" class="cta-button">Get Started</a>
+            </div>
+        </section>
+
+        <section class="features">
+            <h2>Our Services</h2>
+            <div class="feature-grid">
+                <div class="feature">
+                    <h3>Service 1</h3>
+                    <p>Description of service 1</p>
+                </div>
+                <div class="feature">
+                    <h3>Service 2</h3>
+                    <p>Description of service 2</p>
+                </div>
+                <div class="feature">
+                    <h3>Service 3</h3>
+                    <p>Description of service 3</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <h2>What Our Clients Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <p>"{{ testimonial1_text }}"</p>
+                    <cite>- {{ testimonial1_author }}</cite>
+                </div>
+                <div class="testimonial">
+                    <p>"{{ testimonial2_text }}"</p>
+                    <cite>- {{ testimonial2_author }}</cite>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: {{ contact_email }}</p>
+                <p>Phone: {{ contact_phone }}</p>
+                <p>Address: {{ contact_address }}</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="{{ social_facebook }}" target="_blank">Facebook</a>
+                    <a href="{{ social_twitter }}" target="_blank">Twitter</a>
+                    <a href="{{ social_linkedin }}" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; {{ current_year }} {{ site_name }}. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html> 

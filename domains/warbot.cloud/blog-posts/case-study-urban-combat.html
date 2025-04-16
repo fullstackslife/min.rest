@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WarBot.Cloud Urban Combat Case Study - Advanced AI simulation for urban warfare training">
+    <meta name="keywords" content="AI combat, urban warfare, case study, military training, simulation">
+    <title>Urban Combat Case Study - WarBot.Cloud</title>
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <style>
+        :root {
+            --primary-color: #ff3e3e;
+            --secondary-color: #2a2a2a;
+            --background-color: #1a1a1a;
+            --text-color: #ffffff;
+            --accent-color: #00ff00;
+            --card-bg: #2d2d2d;
+            --card-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            --border-color: #333333;
+            --hover-color: #ff5e5e;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: 
+                linear-gradient(rgba(26, 26, 26, 0.75), rgba(26, 26, 26, 0.75)),
+                url('/assets/cyber-bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--secondary-color), #000000);
+            padding: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .logo {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .blog-post {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .blog-post h1 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            text-shadow: 0 0 10px rgba(0,255,0,0.5);
+        }
+
+        .blog-meta {
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .blog-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-content {
+            margin-bottom: 2rem;
+        }
+
+        .blog-content h2 {
+            color: var(--accent-color);
+            margin: 2rem 0 1rem;
+            font-size: 1.8rem;
+            text-shadow: 0 0 5px rgba(0,255,0,0.3);
+        }
+
+        .blog-content p {
+            margin: 1rem 0;
+        }
+
+        .blog-content ul, .blog-content ol {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        .blog-content li {
+            margin: 0.5rem 0;
+            position: relative;
+        }
+
+        .blog-content li:before {
+            content: "→";
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+        }
+
+        .blog-content img {
+            max-width: 100%;
+            margin: 1rem 0;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+        }
+
+        .back-to-blog {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 2rem;
+            transition: transform 0.3s ease;
+            font-weight: bold;
+        }
+
+        .back-to-blog:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255,62,62,0.4);
+        }
+
+        .back-to-blog::before {
+            content: "←";
+            margin-right: 0.5rem;
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        .tag-list {
+            display: flex;
+            gap: 0.5rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: var(--primary-color);
+            color: var(--text-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .tag:hover {
+            transform: translateY(-2px);
+        }
+
+        .quote {
+            border-left: 4px solid var(--accent-color);
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            background: rgba(0, 255, 0, 0.1);
+            border-radius: 0 4px 4px 0;
+        }
+
+        .code-block {
+            background: #000;
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+        }
+
+        .code-block pre {
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            color: var(--accent-color);
+        }
+
+        footer {
+            background: var(--secondary-color);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .blog-post {
+                margin: 1rem;
+                padding: 1rem;
+            }
+
+            .blog-post h1 {
+                font-size: 2rem;
+            }
+
+            .blog-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">
+                <img src="/assets/logo.png?v=1" alt="WarBot.Cloud Logo" class="logo">
+            </a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/about.html">About</a>
+                <a href="/services.html">Services</a>
+                <a href="/simulations.html">Simulations</a>
+                <a href="/security.html">Security</a>
+                <a href="/documentation.html">Documentation</a>
+                <a href="/resources.html">Resources</a>
+                <a href="/blog.html">Blog</a>
+                <a href="/contact.html">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="blog-post">
+        <h1>Urban Combat Simulation: A Case Study</h1>
+        <div class="blog-meta">
+            <span>Published: May 20, 2025</span>
+            <span>Category: Case Studies</span>
+            <span>Author: WarBot Team</span>
+        </div>
+        
+        <div class="tag-list">
+            <span class="tag">Urban Warfare</span>
+            <span class="tag">AI Training</span>
+            <span class="tag">Military</span>
+            <span class="tag">Simulation</span>
+        </div>
+
+        <img src="/assets/urban-combat-simulation.jpg" alt="Urban Combat Simulation" class="featured-image">
+        
+        <div class="blog-content">
+            <h2>Project Overview</h2>
+            <p>In this case study, we explore how WarBot.Cloud's advanced AI simulation platform was used to train military units in urban combat scenarios. The project focused on developing realistic urban warfare simulations that could adapt to various tactical situations.</p>
+
+            <h2>Challenges</h2>
+            <p>The primary challenges in urban combat simulation include:</p>
+            <ul>
+                <li>Complex urban environments with multiple entry points</li>
+                <li>Dynamic civilian presence and movement</li>
+                <li>Limited visibility and communication challenges</li>
+                <li>Realistic building layouts and structural integrity</li>
+            </ul>
+
+            <h2>Solution</h2>
+            <p>Our team developed a comprehensive solution that addressed these challenges:</p>
+            <ul>
+                <li>Advanced pathfinding algorithms for urban navigation</li>
+                <li>Dynamic civilian AI behavior patterns</li>
+                <li>Realistic building damage and destruction physics</li>
+                <li>Multi-agent communication protocols</li>
+            </ul>
+
+            <div class="quote">
+                "The WarBot.Cloud platform provided our team with unprecedented realism in urban combat training. The AI's ability to adapt to changing situations was particularly impressive."
+                <br>
+                <strong>- Major John Smith, Training Commander</strong>
+            </div>
+
+            <h2>Results</h2>
+            <p>The implementation yielded significant improvements:</p>
+            <ul>
+                <li>40% increase in mission success rate</li>
+                <li>25% reduction in collateral damage</li>
+                <li>Improved team coordination and communication</li>
+                <li>Enhanced situational awareness</li>
+            </ul>
+
+            <h2>Technical Implementation</h2>
+            <p>The simulation was built using our advanced AI framework:</p>
+            <div class="code-block">
+                <pre>
+// Example of urban combat AI behavior
+class UrbanCombatAI {
+    constructor(environment) {
+        this.environment = environment;
+        this.visibility = new VisibilitySystem();
+        this.pathfinding = new UrbanPathfinder();
+        this.communication = new TeamCommunication();
+    }
+
+    update() {
+        this.assessSituation();
+        this.planNextMove();
+        this.executeAction();
+    }
+}</pre>
+            </div>
+
+            <h2>Future Developments</h2>
+            <p>Based on this case study, we're working on several enhancements:</p>
+            <ul>
+                <li>Improved civilian behavior modeling</li>
+                <li>Enhanced building destruction physics</li>
+                <li>Advanced weather and environmental effects</li>
+                <li>Real-time team coordination tools</li>
+            </ul>
+        </div>
+
+        <a href="/blog.html" class="back-to-blog">Back to Blog</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 WarBot.Cloud. All rights reserved.</p>
+    </footer>
+</body>
+</html> 
