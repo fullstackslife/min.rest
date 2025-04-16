@@ -19,7 +19,7 @@
 body, html {
     height: 100%;
     overflow: hidden;
-    font-family: 'Georgia', serif;
+    font-family: 'Cormorant Garamond', serif;
     background: #111;
     color: #eee;
     position: relative;
@@ -369,10 +369,10 @@ footer {
     backdrop-filter: blur(5px);
 }
 
-.control-select, .control-btn {
+.control-btn {
     background: transparent;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    color: var(--text-color);
+    color: #eee;
     padding: 0.5rem 1rem;
     border-radius: 1rem;
     font-family: inherit;
@@ -380,11 +380,11 @@ footer {
     transition: all 0.3s ease;
 }
 
-.control-select:hover, .control-btn:hover {
+.control-btn:hover {
     background: rgba(255, 255, 255, 0.1);
 }
 
-.control-select:focus, .control-btn:focus {
+.control-btn:focus {
     outline: none;
     border-color: rgba(255, 255, 255, 0.4);
 }
@@ -394,11 +394,7 @@ footer {
     .poem p {
         font-size: 1.2rem;
     }
-
-    .poem-title {
-        font-size: 2rem;
-    }
-
+    
     .controls {
         flex-wrap: wrap;
         justify-content: center;
