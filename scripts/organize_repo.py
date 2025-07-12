@@ -2,6 +2,7 @@ import os
 import shutil
 import subprocess
 from pathlib import Path
+from utils.process_management import run_command as run_process_command
 
 def create_directory_if_not_exists(directory):
     if not os.path.exists(directory):
@@ -9,14 +10,6 @@ def create_directory_if_not_exists(directory):
 
 def is_git_repo(path):
     return os.path.exists(os.path.join(path, '.git'))
-
-def run_command(command, cwd=None):
-    try:
-        subprocess.run(command, cwd=cwd, check=True, shell=True)
-        return True
-    except subprocess.CalledProcessError as e:
-        print(f"Error running command {command}: {e}")
-        return False
 
 def safe_remove(path):
     try:
@@ -71,7 +64,7 @@ def move_domains_to_domains_folder():
                 
                 # Initialize git if needed
                 if is_git_repo(source_path):
-                    run_command("git init", cwd=target_path)
+                    run_process_command("git init", cwd=target_path, shell=True)
                 
                 # Remove source directory
                 safe_remove(source_path)
@@ -116,6 +109,14 @@ def move_scripts_to_scripts_folder():
                 safe_remove(target_path)
             shutil.move(script, target_path)
             print(f"Moved {script} to scripts folder")
+
+def run_command(command, cwd=None):
+    try:
+        run_process_command(command, cwd=cwd, shell=True)
+        return True
+    except subprocess.CalledProcessError as e:
+        print(f"Error running command {command}: {e}")
+        return False
 
 def main():
     print("Starting repository organization...")

@@ -206,6 +206,9 @@ function updatePoemDisplay() {
     poemContainer.offsetHeight; // Trigger reflow
     poemContainer.style.animation = `scroll ${scrollSpeed}s linear infinite`;
     poemContainer.style.animationPlayState = isPlaying ? 'running' : 'paused';
+    
+    // Ensure the poem starts from the bottom
+    poemContainer.style.transform = 'translateY(100%)';
 }
 
 function updatePoemSelect() {
@@ -249,16 +252,16 @@ function toggleTheme() {
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
+    // Set up initial poem display
     updatePoemDisplay();
     updatePoemSelect();
     
-    // Event listeners
+    // Add event listeners
+    document.querySelector('.control-btn.play').addEventListener('click', togglePlay);
+    document.querySelector('.control-btn.speed').addEventListener('click', changeSpeed);
+    document.querySelector('.control-btn.theme').addEventListener('click', toggleTheme);
     document.querySelector('.control-select').addEventListener('change', (e) => {
         currentPoemIndex = parseInt(e.target.value);
         updatePoemDisplay();
     });
-    
-    document.querySelector('.control-btn.play').addEventListener('click', togglePlay);
-    document.querySelector('.control-btn.speed').addEventListener('click', changeSpeed);
-    document.querySelector('.control-btn.theme').addEventListener('click', toggleTheme);
 }); 

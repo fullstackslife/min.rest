@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const poem = document.querySelector('.poem');
     const pauseBtn = document.getElementById('pauseBtn');
-    const themeBtn = document.getElementById('themeBtn');
+    const themeBtn = document.querySelector('.control-btn.theme');
     let isPaused = false;
     let isDarkTheme = true;
 
@@ -18,16 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Theme toggle functionality
-    themeBtn.addEventListener('click', () => {
-        isDarkTheme = !isDarkTheme;
-        if (isDarkTheme) {
-            document.body.style.setProperty('--bg-color', '#1b2735');
-            document.body.style.setProperty('--fade-color', '#111');
-            themeBtn.textContent = '🌙';
-        } else {
-            document.body.style.setProperty('--bg-color', '#f0f0f0');
-            document.body.style.setProperty('--fade-color', '#fff');
-            themeBtn.textContent = '☀️';
-        }
-    });
+    if (themeBtn) {
+        themeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+            themeBtn.textContent = document.body.classList.contains('dark-theme') ? '☀️' : '🌙';
+        });
+    }
 }); 

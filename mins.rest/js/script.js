@@ -21,13 +21,16 @@ document.addEventListener('DOMContentLoaded', () => {
     themeBtn.addEventListener('click', () => {
         isDarkTheme = !isDarkTheme;
         if (isDarkTheme) {
-            document.body.style.setProperty('--bg-color', '#1b2735');
-            document.body.style.setProperty('--fade-color', '#111');
+            document.body.classList.remove('light-theme');
+            document.body.classList.add('dark-theme');
             themeBtn.textContent = '🌙';
         } else {
-            document.body.style.setProperty('--bg-color', '#f0f0f0');
-            document.body.style.setProperty('--fade-color', '#fff');
+            document.body.classList.remove('dark-theme');
+            document.body.classList.add('light-theme');
             themeBtn.textContent = '☀️';
         }
     });
+
+    // Set initial theme
+    document.body.classList.add('dark-theme');
 }); 
